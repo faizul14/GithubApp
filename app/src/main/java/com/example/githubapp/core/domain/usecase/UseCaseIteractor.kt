@@ -5,8 +5,9 @@ import com.example.githubapp.core.domain.model.ModelDataUser
 import com.example.githubapp.core.domain.model.ModelDetailUser
 import com.example.githubapp.core.domain.model.ModelRepoUser
 import com.example.githubapp.core.domain.repository.IRepository
+import javax.inject.Inject
 
-class UseCaseIteractor(private val repository: IRepository): UseCase{
+class UseCaseIteractor @Inject constructor(private val repository: IRepository): UseCase{
     override fun getDataUser(): LiveData<List<ModelDataUser>> {
         return repository.getDataUser()
     }
