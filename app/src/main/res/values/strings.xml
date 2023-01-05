@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GithubApp</string>
+    <string name="lorem_ipsum_dolor">Lorem Ipsum Dolor</string>
 </resources>
