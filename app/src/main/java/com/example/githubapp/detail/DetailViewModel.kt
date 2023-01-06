@@ -9,4 +9,5 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(private val useCase: UseCase): ViewModel() {
     fun getDetailUser(username: String) = useCase.getDetailUser(username)
+    fun getRepoUser(username: String) = useCase.getRepoUser(username)
 }

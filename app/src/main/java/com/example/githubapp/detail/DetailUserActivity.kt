@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.githubapp.core.domain.model.ModelDetailUser
+import com.example.githubapp.core.domain.model.ModelRepoUser
+import com.example.githubapp.core.ui.RepoUserAdapter
 import com.example.githubapp.databinding.ActivityDetailUserBinding
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.internal.wait
@@ -13,11 +16,18 @@ import okhttp3.internal.wait
 @AndroidEntryPoint
 class DetailUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailUserBinding
+    private lateinit var adapterList: RepoUserAdapter
     private val viewModel: DetailViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        adapterList = RepoUserAdapter()
+        binding.rvRepoUser.apply {
+            layoutManager = LinearLayoutManager(this@DetailUserActivity)
+            setHasFixedSize(true)
+            adapter = adapterList
+        }
         val data = intent.getStringExtra(EXTRA_NAME)
         if (data != null) {
             loadDataDetailUser(data)
@@ -42,9 +52,21 @@ class DetailUserActivity : AppCompatActivity() {
             itmDetail.txtUsernameUser.text = data.login
             itmDetail.txtBioUser.text = data.bio
         }
+
+        viewModel.getRepoUser(username = data.login.toString()).observe(this){dataRepo->
+            if (dataRepo.isNotEmpty()){
+                loadDataRepo(dataRepo)
+            }
+        }
+    }
+
+    private fun loadDataRepo(data: List<ModelRepoUser>){
+        adapterList.setData(data)
+        binding.rvRepoUser.adapter = adapterList
         binding.apply {
             progresbar.visibility = View.GONE
             itmDetail.root.visibility = View.VISIBLE
+            rvRepoUser.visibility = View.VISIBLE
         }
     }
 
