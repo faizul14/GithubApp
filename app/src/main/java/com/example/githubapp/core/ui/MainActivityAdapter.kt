@@ -1,11 +1,13 @@
 package com.example.githubapp.core.ui
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubapp.core.domain.model.ModelDataUser
 import com.example.githubapp.databinding.ItemUserBinding
+import com.example.githubapp.detail.DetailUserActivity
 
 class MainActivityAdapter : RecyclerView.Adapter<MainActivityAdapter.ViewHolder>() {
     private val listData = ArrayList<ModelDataUser>()
@@ -22,6 +24,11 @@ class MainActivityAdapter : RecyclerView.Adapter<MainActivityAdapter.ViewHolder>
                 .load(dataUser.avatarUrl)
                 .into(binding.imgUser)
             binding.nameUser.text = dataUser.login
+            itemView.setOnClickListener{
+                val move = Intent(itemView.context, DetailUserActivity::class.java)
+                move.putExtra(DetailUserActivity.EXTRA_NAME, dataUser.login)
+                itemView.context.startActivity(move)
+            }
         }
     }
 

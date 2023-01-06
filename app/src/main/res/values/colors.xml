@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="line">#F5F5F5</color>
+    <color name="shimer2">#DDDDDD</color>
+    <color name="shimer1">#7F000000</color>
 </resources>
