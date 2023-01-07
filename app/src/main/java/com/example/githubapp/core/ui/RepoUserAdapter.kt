@@ -3,7 +3,9 @@ package com.example.githubapp.core.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.githubapp.R
 import com.example.githubapp.core.domain.model.ModelRepoUser
+import com.example.githubapp.core.utils.DateUtils
 import com.example.githubapp.databinding.ItemRepoUserBinding
 
 class RepoUserAdapter : RecyclerView.Adapter<RepoUserAdapter.ViewHolder>() {
@@ -22,7 +24,8 @@ class RepoUserAdapter : RecyclerView.Adapter<RepoUserAdapter.ViewHolder>() {
                 nameRepo.setText(data.fullName)
                 descriptionRepo.setText(data.description)
                 starsCountRepo.setText(data.stargazersCount.toString())
-                updateRepoStatus.setText(data.updatedAt)
+                val update = itemView.context.getString(R.string.update, DateUtils.getDateUpdate(data.updatedAt!!))
+                updateRepoStatus.setText(update)
             }
         }
     }

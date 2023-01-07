@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Update 15 hours ago"
+        android:text="@string/update"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintStart_toEndOf="@+id/stars_count_repo"

@@ -3,4 +3,5 @@
     <string name="lorem_ipsum_dolor">Lorem Ipsum Dolor</string>
     <string name="loremipsum">/@loremipsum</string>
     <string name="lorem_ipsum_dolor_is_amet_lorem_ipsum_dolor_is_amet_lorem_ipsum_dolor_is_amet">lorem ipsum dolor is amet, lorem ipsum dolor is amet, lorem ipsum dolor is amet</string>
+    <string name="update">Update %s</string>
 </resources>
