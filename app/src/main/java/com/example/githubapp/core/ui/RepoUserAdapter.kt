@@ -21,7 +21,7 @@ class RepoUserAdapter : RecyclerView.Adapter<RepoUserAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: ModelRepoUser) {
             binding.apply {
-                nameRepo.setText(data.fullName)
+                nameRepo.setText(data.name)
                 descriptionRepo.setText(data.description)
                 starsCountRepo.setText(data.stargazersCount.toString())
                 val update = itemView.context.getString(R.string.update, DateUtils.getDateUpdate(data.updatedAt!!))
