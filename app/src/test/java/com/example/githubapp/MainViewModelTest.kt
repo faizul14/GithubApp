@@ -8,18 +8,20 @@ import androidx.lifecycle.asFlow
 import com.example.githubapp.core.domain.model.ModelDataUser
 import com.example.githubapp.core.domain.usecase.UseCase
 import com.example.githubapp.core.utils.DataDummyForTest
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.*
+import org.junit.*
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class MainViewModelTest {
 
+    //untuk live data
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
@@ -33,8 +35,20 @@ class MainViewModelTest {
         viewModel = MainViewModel(useCase)
     }
 
+    //untuk corountine
+    val testDispatcher: TestDispatcher = UnconfinedTestDispatcher()
+
+    @Before
+    fun setupDispatcher() {
+        Dispatchers.setMain(testDispatcher)
+    }
+    @After
+    fun tearDownDispatcher() {
+        Dispatchers.resetMain()
+    }
+
     @Test
-    fun `Ketika Mengambil UserData Tidak Bernilai NUll Dan Berhasil`() {
+    fun `Ketika Mengambil UserData Tidak Bernilai Null Dan Berhasil`() = runTest{
         val observer = Observer<List<ModelDataUser>> {}
         try {
             val exceptdData = MutableLiveData<Result<LiveData<List<ModelDataUser>>>>()
