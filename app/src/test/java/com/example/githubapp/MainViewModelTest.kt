@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.asFlow
 import com.example.githubapp.core.domain.model.ModelDataUser
 import com.example.githubapp.core.domain.usecase.UseCase
 import com.example.githubapp.core.utils.DataDummyForTest
@@ -38,7 +39,7 @@ class MainViewModelTest {
         try {
             val exceptdData = MutableLiveData<Result<LiveData<List<ModelDataUser>>>>()
             exceptdData.value = Result.success(dummyData)
-            `when`(useCase.getDataUser()).thenReturn(dummyData)
+            `when`(useCase.getDataUser()).thenReturn(dummyData.asFlow())
 
             val actualData = viewModel.getData().observeForever(observer)
 
