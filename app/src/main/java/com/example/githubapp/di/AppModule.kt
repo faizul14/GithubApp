@@ -1,7 +1,7 @@
 package com.example.githubapp.di
 
-import com.example.githubapp.core.domain.usecase.UseCase
-import com.example.githubapp.core.domain.usecase.UseCaseIteractor
+import com.example.core.domain.usecase.UseCase
+import com.example.core.domain.usecase.UseCaseIteractor
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

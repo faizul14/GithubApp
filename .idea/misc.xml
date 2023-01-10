@@ -12,6 +12,9 @@
         <entry key="app/src/main/res/layout/item_repo_loading.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_repo_user.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.3591485507246377" />
+        <entry key="core/src/main/res/drawable/ic_baseline_star_outline_24.xml" value="0.2585" />
+        <entry key="core/src/main/res/layout/item_repo_user.xml" value="0.375" />
+        <entry key="core/src/main/res/layout/item_user.xml" value="0.375" />
       </map>
     </option>
   </component>

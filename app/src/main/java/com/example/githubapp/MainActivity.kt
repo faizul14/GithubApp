@@ -1,11 +1,13 @@
 package com.example.githubapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.githubapp.core.ui.MainActivityAdapter
+import com.example.core.ui.MainActivityAdapter
 import com.example.githubapp.databinding.ActivityMainBinding
+import com.example.githubapp.detail.DetailUserActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,5 +31,9 @@ class MainActivity : AppCompatActivity() {
                 binding.rvDataUser.adapter = adapterList
             }
         }
+    }
+
+    fun move(){
+        val i = Intent(this, DetailUserActivity::class.java)
     }
 }
