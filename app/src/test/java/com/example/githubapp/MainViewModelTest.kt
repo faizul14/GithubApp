@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.asFlow
-import com.example.githubapp.core.domain.model.ModelDataUser
-import com.example.githubapp.core.domain.usecase.UseCase
+import com.example.core.domain.model.ModelDataUser
+import com.example.core.domain.usecase.UseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.*

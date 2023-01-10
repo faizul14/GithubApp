@@ -2,7 +2,7 @@ package com.example.githubapp.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.example.githubapp.core.domain.usecase.UseCase
+import com.example.core.domain.usecase.UseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
