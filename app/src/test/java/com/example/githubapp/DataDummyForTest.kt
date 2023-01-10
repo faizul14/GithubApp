@@ -2,7 +2,7 @@ package com.example.githubapp
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.githubapp.core.domain.model.ModelDataUser
+import com.example.core.domain.model.ModelDataUser
 
 object DataDummyForTest {
     fun generateDummyModelDataUser() : LiveData<List<ModelDataUser>>{

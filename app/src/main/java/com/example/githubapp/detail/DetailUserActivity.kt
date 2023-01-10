@@ -6,12 +6,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.githubapp.core.domain.model.ModelDetailUser
-import com.example.githubapp.core.domain.model.ModelRepoUser
-import com.example.githubapp.core.ui.RepoUserAdapter
+import com.example.core.domain.model.ModelDetailUser
+import com.example.core.domain.model.ModelRepoUser
+import com.example.core.ui.RepoUserAdapter
 import com.example.githubapp.databinding.ActivityDetailUserBinding
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.internal.wait
 
 @AndroidEntryPoint
 class DetailUserActivity : AppCompatActivity() {
@@ -28,7 +27,7 @@ class DetailUserActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = adapterList
         }
-        val data = intent.getStringExtra(EXTRA_NAME)
+        val data = intent.getStringExtra("EXTRA_NAME")
         if (data != null) {
             loadDataDetailUser(data)
         }
@@ -53,14 +52,14 @@ class DetailUserActivity : AppCompatActivity() {
             itmDetail.txtBioUser.text = data.bio
         }
 
-        viewModel.getRepoUser(username = data.login.toString()).observe(this){dataRepo->
-            if (dataRepo.isNotEmpty()){
+        viewModel.getRepoUser(username = data.login.toString()).observe(this) { dataRepo ->
+            if (dataRepo.isNotEmpty()) {
                 loadDataRepo(dataRepo)
             }
         }
     }
 
-    private fun loadDataRepo(data: List<ModelRepoUser>){
+    private fun loadDataRepo(data: List<ModelRepoUser>) {
         adapterList.setData(data)
         binding.rvRepoUser.adapter = adapterList
         binding.apply {
